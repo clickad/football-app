@@ -1,0 +1,31 @@
+
+  <div class = "table-responsive standing__table">
+    <table class = "table__standings table-striped">
+      <thead>
+        <tr>
+	  <td class = "table__nambers">Position</td>
+          <td>Team</td>
+          <td class = "table__nambers">Games</td>
+          <td class = "table__nambers">Points</td>
+	  <td class = "table__nambers">Diff</td>
+	  <td class = "table__nambers">Goals</td>
+	  <td class = "table__nambers">Wins</td>
+          <td class = "table__nambers">Draws</td>
+	  <td class = "table__nambers">Losses</td>
+	</tr>
+      </thead>
+      <tbody>
+       <tr ng-repeat = "teams in hc.standings.standing">
+	  <td class = "table__nambers">{{teams.position}}</td>
+          <td><span><img src = "{{teams.crestURI}}" alt = "" width = "12px"> </span><span>{{teams.teamName}}</span></td>
+          <td class = "table__nambers">{{teams.playedGames}}</td>
+          <td class = "table__nambers">{{teams.points}}</td>
+	  <td class = "table__nambers">{{teams.goalDifference}}</td>
+	  <td class = "table__nambers">{{teams.goals + ' : ' + teams.goalsAgainst}}</td>	
+	  <td class = "table__nambers">{{teams.wins}}</td>
+	  <td class = "table__nambers">{{teams.draws}}</td>
+	  <td class = "table__nambers">{{teams.losses}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
