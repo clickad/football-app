@@ -12,7 +12,7 @@
                  </div>
 	       </div>
 	       <div class = "header__tabs">
-	         <span ng-init = "hc.load()" class = "tabs" ng-repeat = "dayd in hc.games | unique: 'day'" ng-click = "hc.gameDay(dayd.day, $index)">{{dayd.month + '/' + dayd.day}}</span>
+	         <span ng-init = "hc.load()" class = "tabs" ng-repeat = "dayd in hc.games | unique: 'day'" ng-click = "hc.gameDay(dayd.day, dayd.month, $index)">{{dayd.month + '/' + dayd.day}}</span>
 	       </div>
 	    </div>
 	    <div class="table-responsive table__wrapper">
