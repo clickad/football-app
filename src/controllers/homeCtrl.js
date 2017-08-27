@@ -134,8 +134,9 @@ app.controller('homeCtrl', homeCtrl)
 
   
     //On date tabs click change date 
-    vm.gameDay = function(day, index){
+    vm.gameDay = function(day, month, index){
       	vm.todayDay = day.toString().trim();
+	vm.todayMonth = month.toString().trim();
         tab = angular.element( document.querySelectorAll(".tabs") );
         active = angular.element(tab[index]);
         tab.removeClass('active');
