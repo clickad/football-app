@@ -1,46 +1,46 @@
-
 <div class = "content__table">
-<div class = "loader" ng-if = "hc.loaded == true"><img src = "img/loader.gif" alt = "Loading..."></div>
-            <div class = "header">
-	       <div class = "header__logo">
-		 <span>SOCCER SCORES</span>
-               </div>
-	       <div class = "header__search">
-		 <div class="icon-addon addon-lg">
-		   <input class="form-control" type = "text" ng-model = "search" placeholder = "SEARCH" id = "search">
-	           <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="search"></label>
-                 </div>
-	       </div>
-	       <div class = "header__tabs">
-	         <span ng-init = "hc.load()" class = "tabs" ng-repeat = "dayd in hc.games | unique: 'day'" ng-click = "hc.gameDay(dayd.day, dayd.month, $index)">{{dayd.month + '/' + dayd.day}}</span>
-	       </div>
-	    </div>
-	    <div class="table-responsive table__wrapper">
-             <table class = "scores__table table" ng-repeat = "competition in hc.games | filter: search | unique: 'competitionId'" ng-show = "competition.month == hc.todayMonth && hc.content($index) == true">               
-	       <caption class = "table__caption">
-		 <span class = "campetition__title">{{competition.compCaption}}</span>
+  <div class = "loader" ng-if = "hc.loaded == true"><img src = "img/loader.gif" alt = "Loading..."></div>
+  <div class = "header">
+    <div class = "header__logo">
+      <span>SOCCER SCORES</span>
+    </div>
+    <div class = "header__search">
+      <div class="icon-addon addon-lg">
+        <input class="form-control" type = "text" ng-model = "search" placeholder = "SEARCH" id = "search">
+        <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="search"></label>
+      </div>
+    </div>
+    <div class = "header__tabs">
+      <span ng-init = "hc.load()" class = "tabs" ng-repeat = "dayd in hc.games | unique: 'day'" ng-click = "hc.gameDay(dayd.day, dayd.month, $index)">{{dayd.month + '/' + dayd.day}}</span>
+    </div>
+  </div>
+  <div class="table-responsive table__wrapper">
+    <table class = "scores__table table" ng-repeat = "competition in hc.games | filter: search  | unique: 'competitionId'" ng-show = "hc.content($index) == true">               
+      <caption class = "table__caption">
+        <span class = "campetition__title">{{competition.compCaption}}</span>
 
-	         <span class = "caption__standing" ng-click = "hc.getStandings(competition.competitionId, $index)">
-		  Table 
-	          <i ng-show = "hc.showTable == false" class="glyphicon glyphicon-collapse-down"></i>
-		  <i ng-show = "hc.showTable == true" class="glyphicon glyphicon-collapse-up"></i>
-		 </span>
+        <span class = "caption__standing" ng-click = "hc.getStandings(competition.competitionId, $index)">
+          Table 
+          <i ng-show = "hc.showTable == false" class="glyphicon glyphicon-collapse-down"></i>
+          <i ng-show = "hc.showTable == true" class="glyphicon glyphicon-collapse-up"></i>
+        </span>
 
-                <div ng-if = "hc.showTable && hc.compId == competition.competitionId"  class = "standing__wrapper" ng-include = "'views/table.html'"></div>
+        <div ng-if = "hc.showTable && hc.compId == competition.competitionId"  class = "standing__wrapper" ng-include = "'views/table.html'">
+        </div>
 
-               </caption>
-	       <tbody>
+      </caption>
+      <tbody>
+        <tr ng-repeat = "game in hc.games | filter: search" ng-if = "competition.competitionId == game.competitionId && game.month == hc.todayMonth && game.day == hc.todayDay">
+          <td class = "table__date">{{game.month + '/' + game.day}}</td>
+          <td class = "table__team first">{{game.homeTeamName}}</td>
+          <td class = "table__score" ng-class = "{'live': game.status == 'IN_PLAY'}">{{game.result.goalsHomeTeam + ' : ' + 
 
-
-		<tr ng-repeat = "game in hc.games | filter: search" ng-if = "competition.competitionId == game.competitionId && game.month == hc.todayMonth && game.day == hc.todayDay">
-                  <td class = "table__date">{{game.month + '/' + game.day}}</td>
-                  <td class = "table__team first">{{game.homeTeamName}}</td>
-                  <td class = "table__score" ng-class = "{'live': game.status == 'IN_PLAY'}">{{game.result.goalsHomeTeam + ' : ' + game.result.goalsAwayTeam}}</td>
-                  <td class = "table__team second">{{game.awayTeamName}}</td>
-		  <!--<td class = "table__status"><span ng-if = "game.status == 'IN_PLAY'">Playing</span></td>-->
-                  <td class = "table__time"><span>{{game.hours + ':' + game.minutes}}</span></td>
-                </tr>
-	       </tbody>
-             </table>
-	    </div>
-	  </div>
+            game.result.goalsAwayTeam}}</td>
+          <td class = "table__team second">{{game.awayTeamName}}</td>
+          <!--<td class = "table__status"><span ng-if = "game.status == 'IN_PLAY'">Playing</span></td>-->
+          <td class = "table__time"><span>{{game.hours + ':' + game.minutes}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
