@@ -1,4 +1,4 @@
-﻿var app = angular.module('scores');
+var app = angular.module('scores');
 
 app.controller('homeCtrl', homeCtrl)
 
@@ -17,7 +17,7 @@ app.controller('homeCtrl', homeCtrl)
      var today = new Date();
      vm.todayMonth = today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1;
      vm.todayDay = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
-     vm.todayMonth = vm.todayMonth.trim();
+     vm.todayMonth = vm.todayMonth.toString().trim();
      vm.todayDay = today.getDate().toString().trim();
 
      _init();
@@ -64,7 +64,7 @@ app.controller('homeCtrl', homeCtrl)
 			value.month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
      	 		value.day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
 
-                        value.month = value.month.trim();
+                        value.month = value.month.toString().trim();
 			value.day = value.day.toString().trim();
 
 			value.hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
@@ -119,7 +119,7 @@ app.controller('homeCtrl', homeCtrl)
 
                               standingsService.getStandings(id)
 		              .then(function(standings) {
-                                vm.standings = standings; console.log(vm.standings);
+                                vm.standings = standings;
 			        vm.compId = vm.standings._links.competition.href.substr(-3, vm.standings._links.competition.href.length);
                                 vm.compId = Number(vm.compId);
                                 vm.loaded = false;
@@ -136,7 +136,7 @@ app.controller('homeCtrl', homeCtrl)
     //On date tabs click change date 
     vm.gameDay = function(day, month, index){
       	vm.todayDay = day.toString().trim();
-	vm.todayMonth = month.toString().trim();
+        vm.todayMonth = month.toString().trim();
         tab = angular.element( document.querySelectorAll(".tabs") );
         active = angular.element(tab[index]);
         tab.removeClass('active');
@@ -156,7 +156,6 @@ app.controller('homeCtrl', homeCtrl)
 	var table = angular.element(document.querySelectorAll(".table > tbody"));
         var current = angular.element(table[index])
         var subCurrent = angular.element(table[index].querySelectorAll("tr"));
-
 	if(subCurrent.length > 0 && subCurrent != undefined){
 	   return true;
 	} else {
