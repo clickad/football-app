@@ -18,7 +18,7 @@ app.controller('homeCtrl', homeCtrl)
      vm.todayMonth = today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1;
      vm.todayDay = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
      vm.todayMonth = vm.todayMonth.toString().trim();
-     vm.todayDay = today.getDate().toString().trim();
+     vm.todayDay = vm.todayDay.toString().trim();
 
      _init();
 
