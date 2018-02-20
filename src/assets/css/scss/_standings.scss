@@ -1,0 +1,22 @@
+.standings{
+  margin-top: 8px;
+  
+  &__table{
+    margin-bottom: 0px !important;
+    border-color: #333;
+    background-color: #181818;
+    width: 100%;
+    font-weight: normal;
+  }
+  
+  &__wrapper &__table thead{
+    background: #013264;
+    font-weight: bold;
+  }
+  
+  &__table td{
+    padding: 3px 5px;
+    border: none !important;
+    text-align: center;
+  }
+}

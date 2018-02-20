@@ -1,0 +1,178 @@
+$primary-color: #aaa;
+$secondary-color: #ccc;
+$hover-color: #999;
+
+$standard-font: 18px;
+$s-font: 14px;
+$xs-font: 12px;
+$xxs-font: 10px;
+
+
+@import 'header'
+@import 'table'
+@import 'standings'
+
+body{
+  color: $primary-color;
+  font-family: 'Antic', Syncopate, Cinzel,'Bubbler One',Arsenal;
+  overflow-x: hidden;
+  font-size: $standard-font;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited{
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  text-decoration: none;
+  color: inherit;
+}
+
+.input-group .icon-addon .form-control{
+  border-radius: 0;
+}
+
+.icon-addon {
+  position: relative;
+  color: #555;
+  display: block;
+}
+
+.icon-addon:after,
+.icon-addon:before{
+  display: table;
+  content: " ";
+}
+
+.icon-addon:after{
+  clear: both;
+}
+
+.icon-addon.addon-md .glyphicon,
+.icon-addon .glyphicon, 
+.icon-addon.addon-md .fa,
+.icon-addon .fa{
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  font-size: 14px;
+  width: 20px;
+  margin-left: -2.5px;
+  text-align: center;
+  padding: 10px 0;
+  top: 1px;
+}
+
+.icon-addon .form-control:focus + .glyphicon,
+.icon-addon:hover .glyphicon,
+.icon-addon .form-control:focus + .fa,
+.icon-addon:hover .fa {
+  color: #2580db;
+}
+
+.table-responsive{
+  border: none !important;
+}
+
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 100;
+}
+
+.loader img{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container-fluid{
+  min-height: 100vh;
+  background-color: #111;
+}
+
+.active{
+  background-color: #012142;
+}
+
+.view-wrapper{
+  padding: 80px 0px;
+}
+
+
+/*MEDIA*/
+
+@media (max-width:1470px ){
+  .header__logo, 
+  .header__tabs-wrapper,  
+  .header__search{
+    width: 100% !important;
+    text-align: center;
+    margin: 5px 0px;
+  }
+  .table-responsive .table{
+    min-width: 700px;
+    max-height: 600px !important;
+  }
+}
+
+@media (max-width:540px ){
+  .header__tabs{
+    font-size: $s-font;
+    padding: 10px 7px;
+  }
+  .table{
+    font-size: $xs-font;
+    &__status span{
+      font-size: $xs-font;
+    }
+    &__wrapper .table{
+       min-width: 500px;
+    }
+  }
+}
+
+@media (max-width:360px ){
+  .header__tabs{
+    font-size: $xxs-font;
+    padding: 10px 5px;
+  }
+
+}
+
+/*ANIMATIONS*/
+.standings {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
+
+
+
+
+
+
