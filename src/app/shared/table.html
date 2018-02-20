@@ -1,31 +1,34 @@
-
-  <div class = "table-responsive standing__table">
-    <table class = "table__standings table-striped">
-      <thead>
-        <tr>
-	  <td class = "table__nambers">Position</td>
-          <td>Team</td>
-          <td class = "table__nambers">Games</td>
-          <td class = "table__nambers">Points</td>
-	  <td class = "table__nambers">Diff</td>
-	  <td class = "table__nambers">Goals</td>
-	  <td class = "table__nambers">Wins</td>
-          <td class = "table__nambers">Draws</td>
-	  <td class = "table__nambers">Losses</td>
-	</tr>
-      </thead>
-      <tbody>
-       <tr ng-repeat = "teams in hc.standings.standing">
-	  <td class = "table__nambers">{{teams.position}}</td>
-          <td><span><img src = "{{teams.crestURI}}" alt = "" width = "12px"> </span><span>{{teams.teamName}}</span></td>
-          <td class = "table__nambers">{{teams.playedGames}}</td>
-          <td class = "table__nambers">{{teams.points}}</td>
-	  <td class = "table__nambers">{{teams.goalDifference}}</td>
-	  <td class = "table__nambers">{{teams.goals + ' : ' + teams.goalsAgainst}}</td>	
-	  <td class = "table__nambers">{{teams.wins}}</td>
-	  <td class = "table__nambers">{{teams.draws}}</td>
-	  <td class = "table__nambers">{{teams.losses}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class = "table-responsive standings__wrapper">
+  <table class = "standings__table table-striped col-xs-12">
+    <thead>
+      <tr>
+        <td>Position</td>
+        <td>Team</td>
+        <td>Games</td>
+        <td>Points</td>
+        <td>Diff</td>
+        <td>Goals</td>
+        <td>Wins</td>
+        <td>Draws</td>
+        <td>Losses</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "teams in stand.standing">
+        <td>{{teams.position}}</td>
+        <td>
+          <span><img src = "{{teams.crestURI}}" alt = "" width = "12px"> 
+          </span>
+          <span>{{teams.teamName}}</span>
+        </td>
+        <td>{{teams.playedGames}}</td>
+        <td>{{teams.points}}</td>
+        <td>{{teams.goalDifference}}</td>
+        <td>{{teams.goals + ' : ' + teams.goalsAgainst}}</td>	
+        <td>{{teams.wins}}</td>
+        <td>{{teams.draws}}</td>
+        <td>{{teams.losses}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
