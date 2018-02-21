@@ -86,6 +86,10 @@ a:hover {
   transform: translate(-50%, -50%);
 }
 
+.content{
+  display: none;
+}
+
 .container-fluid {
   min-height: 100vh;
   background-color: #111;
@@ -226,6 +230,10 @@ a:hover {
   text-align: center;
 }
 
+.standings__table .standings__team{
+  text-align: left;
+}
+
 /*MEDIA*/
 @media (max-width: 1470px) {
   .header__logo,
@@ -243,7 +251,7 @@ wrapper,
     max-height: 600px !important;
   }
 }
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   .header__tabs {
     font-size: 14px;
     padding: 10px 7px;
@@ -259,7 +267,7 @@ wrapper,
     min-width: 500px;
   }
 }
-@media (max-width: 360px) {
+@media (max-width: 420px) {
   .header__tabs {
     font-size: 10px;
     padding: 10px 5px;

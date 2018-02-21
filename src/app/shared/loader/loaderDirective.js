@@ -16,9 +16,10 @@ function loader($rootScope, $http, $timeout) {
 
       scope.$watch(scope.isLoading, function (v){
         if(v){
-          $(elm).show();
+          $(elm).show(); $
         }else{
-          $(elm).hide();
+          $(elm).hide(); console.log('tu2');
+          $('.content').show();
         }
       });
     }

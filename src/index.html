@@ -4,10 +4,13 @@
     <title>Soccer scores</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet'>
+
     <link href='https://fonts.googleapis.com/css?family=Antic' rel='stylesheet'>
 
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+     <link rel="stylesheet" 
+           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+           crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   
@@ -17,13 +20,29 @@
     <script src = "assets/js/angular.js"></script>
     <script src = "assets/js/route.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+            crossorigin="anonymous"></script>
     
     <script src="https://use.fontawesome.com/02bbf56286.js"></script>
+
+
+  </head>
+  <body>
+    <div class = "loader" loader></div>
+    <div class = "container-fluid">
+
+      <div class = "wrapper">
+        <section class = "view-wrapper col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" ng-view>
+	  <!-- Content -->
+        </section>
+      </div>
+
+    </div>
 
     <!-- angular module -->
     <script src = "app/app.js"></script> 
@@ -39,18 +58,8 @@
     <!--angular filters-->
     <script src = "app/filters/uniqueFilter.js"></script>
 
-
-  </head>
-  <body>
-  
-    <div class = "container-fluid">
-
-     <div class = "wrapper">
-       <section class = "content col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" ng-view>
-	  <!-- Content -->
-       </section>
-     </div>
-
-  </div>
+    <!--angular Directives-->
+    <script src = "app/shared/standingsDirective.js"></script>
+    <script src = "app/shared/loader/loaderDirective.js"></script>
  </body>
 </html>
