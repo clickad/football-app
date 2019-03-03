@@ -1,0 +1,22 @@
+<div class = "table-responsive standings__wrapper">
+  <table class = "standings__table table-striped col-xs-12">
+    <thead>
+      <tr>
+		<td>Position</td>
+        <td>Name</td>
+		<td>Country</td>
+        <td>Team</td>
+		<td>Goals</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "scorer in scorer.scorers">
+		<td>{{$index+1}}</td>	
+        <td class = "gold-color">{{scorer.player.name}}</td>
+		<td>{{scorer.player.countryOfBirth}}</td>
+		<td>{{scorer.team.name}}</td>
+        <td class = "gold-color">{{scorer.numberOfGoals}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

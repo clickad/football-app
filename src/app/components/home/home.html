@@ -1,7 +1,8 @@
 <div class = "content">
   <div class = "header">
+    <img class = "re-load" src = "assets/img/loader.gif" alt = "Re-loading..." width = "22">
     <div class = "header__logo">
-      <span>SOCCER SCORES</span>
+      <span>FOOTBALL SCORES</span>
     </div>
     <div class = "header__search">
       <div class="icon-addon addon-lg">
@@ -17,38 +18,56 @@
             ng-repeat = "dayd in hc.games | unique: 'day'" 
             ng-class = "{active: hc.isSet($index)}"
             ng-click = "hc.gameDay(dayd.day, dayd.month); hc.setTab($index)">
-        {{dayd.month + '/' + dayd.day}}
+        {{dayd.day + '/' + dayd.month}}
       </span>
     </div>
   </div>
   <div class="table-responsive">
     <table class = "table table__scores" 
-           ng-repeat = "competition in hc.games | filter: search  | unique: 'competitionId'" 
+           ng-repeat = "competition in hc.games | filter: search  | unique: 'id'" 
            ng-show = "hc.content($index) === true">               
       <caption class = "table__caption">
-        <span class = "table__title">{{competition.compCaption}}</span>
-        <span class = "table__btn" ng-click = "hc.getStandings(competition.competitionId, $index)">
+        <span class = "table__title">{{competition.competition.name}}</span>
+        <button class = "table__btn" ng-click = "hc.getStandings(competition.competition.id, $index)">
           Table 
           <i ng-show = "hc.showTable === false" class="glyphicon glyphicon-collapse-down"></i>
           <i ng-show = "hc.showTable === true" class="glyphicon glyphicon-collapse-up"></i>
-        </span>
-
-        <div ng-if = "hc.showTable && hc.compId == competition.competitionId" 
+        </button>
+		<button class = "table__btn" ng-click = "hc.getScorers(competition.competition.id, $index)">
+          Scorers 
+          <i ng-show = "hc.showTable === false" class="glyphicon glyphicon-collapse-down"></i>
+          <i ng-show = "hc.showTable === true" class="glyphicon glyphicon-collapse-up"></i>
+        </button>
+        <div ng-if = "hc.showTable && hc.compId == competition.competition.id" 
              class = "standings" standings stand = "hc.standings"></div>
+			 
+		<div ng-if = "hc.showTable2 && hc.compId2 == competition.competition.id" 
+		class = "standings" scorers scorer = "hc.scorers"></div>
       </caption>
       <tbody>
         <tr ng-repeat = "game in hc.games | filter: search" 
-            ng-if = "competition.competitionId === game.competitionId && 
+            ng-if = "competition.competition.id === game.competition.id && 
                      game.month === hc.todayMonth && game.day == hc.todayDay">
-          <td class = "table__date">{{game.month + '/' + game.day}}</td>
-          <td class = "table__team table__team--first">{{game.homeTeamName}}</td>
+          <td class = "table__date">	
+			{{game.day + '/' + game.month}}
+		  </td>
+          <td class = "table__team table__team--first">{{game.homeTeam.name}}</td>
           <td class = "table__score" ng-class = "{'live': game.status === 'IN_PLAY'}">
-            {{game.result.goalsHomeTeam + ' : ' + game.result.goalsAwayTeam}}
+			<span ng-if = "game.status === 'PAUSED'">(</span>
+			  <span ng-if = "game.score.fullTime.homeTeam === null">-</span>
+			  <span ng-if = "game.score.fullTime.homeTeam != null">{{game.score.fullTime.homeTeam}}</span>
+			  <span> : </span>
+			  <span ng-if = "game.score.fullTime.awayTeam === null">-</span>
+			  <span ng-if = "game.score.fullTime.awayTeam != null">{{game.score.fullTime.awayTeam}}</span>
+			  <span ng-if = "game.status === 'PAUSED'">)</span>
           </td>
-          <td class = "table__team table__team--second">{{game.awayTeamName}}</td>
-          <td class = "table__time"><span>
-            {{game.hours + ':' + game.minutes}}
-            </span></td>
+          <td class = "table__team table__team--second">{{game.awayTeam.name}}</td>
+          <td class = "table__time">
+            <span class = "time" ng-if = "game.status === 'SCHEDULED'">{{game.hours + ':' + game.minutes}}</span>
+			<span class = "status playing" ng-if = "game.status === 'IN_PLAY'"><span class = "blinking"></span>Playing</span>
+			<span class = "status gold-color" ng-if = "game.status === 'PAUSED'">Half Time</span>
+			<span class = "status gold-color" ng-if = "game.status === 'FINISHED'">Finished</span>
+          </td>
         </tr>
       </tbody>
     </table>

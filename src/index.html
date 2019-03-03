@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app ='scores'>
   <head>
-    <title>Soccer scores</title>
+    <title>Football scores</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 
@@ -40,6 +40,7 @@
         <section class = "view-wrapper col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" ng-view>
 	  <!-- Content -->
         </section>
+		<footer class = "col-xs-12 footer">Powered by <a href = "https://www.football-data.org/" target = "_blank">football-data.org</a></footer>
       </div>
 
     </div>
@@ -49,8 +50,8 @@
   
     <!-- angular services -->
     <script src = "app/services/fixtureService.js"></script>
-    <script src = "app/services/competitionsService.js"></script>
     <script src = "app/shared/standingsService.js"></script>
+	<script src = "app/shared/scorersService.js"></script>
 
     <!-- angular controllers -->
     <script src = "app/components/home/homeCtrl.js"></script>
@@ -60,6 +61,7 @@
 
     <!--angular Directives-->
     <script src = "app/shared/standingsDirective.js"></script>
+	<script src = "app/shared/scorersDirective.js"></script>
     <script src = "app/shared/loader/loaderDirective.js"></script>
  </body>
 </html>

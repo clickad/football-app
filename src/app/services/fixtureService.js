@@ -8,10 +8,10 @@ function fixtureService($http, $q) {
     getFixtures: getFixtures
   };
   return service;
-  function getFixtures() {
+  function getFixtures(d1, d2) {
     var def = $q.defer();
     $http({method : 'GET',
-           url : 'https://api.football-data.org/v1/fixtures', 
+           url : 'https://api.football-data.org/v2/matches?dateFrom='+d1+'&dateTo='+d2+'', 
            headers: { 'X-Auth-Token': '92c212ebba4842ef95b0958290d908ce'}
           })
       .success(function(data, status) {
@@ -19,7 +19,7 @@ function fixtureService($http, $q) {
       def.resolve(data);
     })
       .error(function(data, status) {
-      alert("There is a problem with your network, please try again....");
+      alert("There is a problem with your network, please try again...");
     })
     return def.promise;
   }

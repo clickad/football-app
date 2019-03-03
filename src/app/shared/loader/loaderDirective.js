@@ -15,12 +15,27 @@ function loader($rootScope, $http, $timeout) {
       };
 
       scope.$watch(scope.isLoading, function (v){
-        if(v){
-          $(elm).show(); $
-        }else{
-          $(elm).hide(); console.log('tu2');
-          $('.content').show();
-        }
+		if(!$rootScope.firstLoad){
+			if(v){ 
+				elm[0].style.display = "block";
+				elm[0].style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+				elm[0].firstElementChild.style.display = "block";
+			}else{
+				elm[0].style.display = "none";
+				document.querySelector(".content").style.display = "block";
+			}
+		} else{
+			if(v){ 
+				elm[0].style.display = "block";
+				elm[0].style.backgroundColor = "transparent";
+				elm[0].firstElementChild.style.display = "none";
+				document.querySelector(".re-load").style.display = "block"
+			}else{
+				elm[0].style.display = "none";
+				document.querySelector(".content").style.display = "block";
+				document.querySelector(".re-load").style.display = "none"
+			}
+		}
       });
     }
   };

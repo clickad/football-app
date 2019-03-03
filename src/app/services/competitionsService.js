@@ -8,10 +8,10 @@ function competitionsService($http, $q) {
     getCompetitions: getCompetitions
   };
   return service;
-  function getCompetitions() {
+  function getCompetitions(id) {
     var def = $q.defer();
     $http({method : 'GET',
-           url : 'https://api.football-data.org/v1/competitions', 
+           url : 'https://api.football-data.org/v2/competitions/' + id + '/scorers', 
            headers: { 'X-Auth-Token': '92c212ebba4842ef95b0958290d908ce'}
           })
       .success(function(data, status) {

@@ -1,5 +1,5 @@
 <div class = "table-responsive standings__wrapper">
-  <table class = "standings__table table-striped col-xs-12">
+  <table class = "standings__table table-striped col-xs-12" ng-repeat = "table in stand | filter: table.type = 'TOTAL'">
     <thead>
       <tr>
         <td>Position</td>
@@ -14,20 +14,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat = "teams in stand.standing">
-        <td>{{teams.position}}</td>
-        <td class = "standings__team">
-          <span><img src = "{{teams.crestURI}}" alt = "" width = "12px"> 
+      <tr ng-repeat = "team in table.table">
+        <td>{{team.position}}</td>
+        <td class = "standings__team gold-color"">
+          <span><img src = "{{team.team.crestUrl}}" alt = "" width = "12px"> 
           </span>
-          <span>{{teams.teamName}}</span>
+          <span>{{team.team.name}}</span>
         </td>
-        <td>{{teams.playedGames}}</td>
-        <td>{{teams.points}}</td>
-        <td>{{teams.goalDifference}}</td>
-        <td>{{teams.goals + ' : ' + teams.goalsAgainst}}</td>	
-        <td>{{teams.wins}}</td>
-        <td>{{teams.draws}}</td>
-        <td>{{teams.losses}}</td>
+        <td>{{team.playedGames}}</td>
+        <td class = "gold-color">{{team.points}}</td>
+        <td>{{team.goalDifference}}</td>
+        <td>{{team.goalsFor + ' : ' + team.goalsAgainst}}</td>	
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
       </tr>
     </tbody>
   </table>
